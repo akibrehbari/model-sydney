@@ -62,6 +62,7 @@ export default function ModelPage() {
     <main
       className={`flex flex-col items-center justify-center px-6 py-12 bg-gradient-to-br ${gradient} text-white min-h-screen`}
     >
+      <img src="/avatar.png" alt="Avatar" className="w-24 h-24 rounded-full object-cover mb-4 border-2 border-white/20" />
       <h1 className="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-center mb-2">
         {model.name}
       </h1>
