@@ -52,6 +52,11 @@ function getModelPhotos(): string[] {
 export const metadata = {
   title: model.name,
   description: model.description,
+  openGraph: {
+    title: model.name,
+    description: model.description,
+    images: [`/models/${model.username}/image (3).png`],
+  },
 };
 
 export default function ModelPage() {
