@@ -50,7 +50,7 @@ export function ButterflyGame() {
     };
 
     fly();
-    intervalRef.current = setInterval(fly, 2200);
+    intervalRef.current = setInterval(fly, 3500);
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -82,7 +82,7 @@ export function ButterflyGame() {
             left: `${pos.x}%`,
             top: `${pos.y}%`,
             transform: "translate(-50%, -50%)",
-            transition: "left 1.8s cubic-bezier(0.45, 0.05, 0.55, 0.95), top 1.8s cubic-bezier(0.45, 0.05, 0.55, 0.95)",
+            transition: "left 2.8s cubic-bezier(0.45, 0.05, 0.55, 0.95), top 2.8s cubic-bezier(0.45, 0.05, 0.55, 0.95)",
             filter: "drop-shadow(0 0 8px rgba(255,180,255,0.6))",
             animation: "bob 2s ease-in-out infinite",
           }}
