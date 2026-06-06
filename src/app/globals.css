@@ -1,5 +1,25 @@
 @import "tailwindcss";
 
+@keyframes float {
+  0%, 100% { transform: translate(-50%, -50%) rotate(-8deg) scale(1); }
+  25% { transform: translate(-50%, -60%) rotate(8deg) scale(1.1); }
+  50% { transform: translate(-50%, -50%) rotate(-5deg) scale(1); }
+  75% { transform: translate(-50%, -40%) rotate(6deg) scale(1.05); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.butterfly-float {
+  animation: float 2.5s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease forwards;
+}
+
 @theme inline {
   --font-sans: var(--font-inter);
   --font-heading: var(--font-syne);
