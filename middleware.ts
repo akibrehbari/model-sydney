@@ -6,7 +6,6 @@ const BLOCKED_AGENTS = [
   "facebot",
   "twitterbot",
   "linkedinbot",
-  "instagram",
   "pinterest",
   "slackbot",
   "telegrambot",
