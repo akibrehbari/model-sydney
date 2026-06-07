@@ -1,13 +1,8 @@
-import { readdirSync } from "fs";
-import { join } from "path";
 import models from "@/data/models.json";
-import { HeroCarousel } from "@/components/hero-carousel";
 import { SocialLinks } from "@/components/social-links";
 import { ButterflyGame } from "@/components/butterfly-game";
 
 const model = models[0];
-
-const SUPPORTED = new Set([".jpg", ".jpeg", ".png", ".webp", ".gif"]);
 
 const gradients: Record<string, string> = {
   a: "from-[#3d1f4a] via-[#1a1a2e] to-[#2a1850]",
@@ -38,54 +33,37 @@ const gradients: Record<string, string> = {
   z: "from-[#3d1a28] via-[#1a1a2e] to-[#1a3d38]",
 };
 
-function getModelPhotos(): string[] {
-  try {
-    const dir = join(process.cwd(), "public", "models", model.username);
-    return readdirSync(dir)
-      .filter((f) => SUPPORTED.has(f.slice(f.lastIndexOf(".")).toLowerCase()))
-      .map((f) => `/models/${model.username}/${f}`);
-  } catch {
-    return [];
-  }
-}
-
 export const metadata = {
   title: model.name,
   description: model.description,
   openGraph: {
     title: model.name,
     description: model.description,
-    images: ['/og-image.png'],
+    images: ["/og-image.jpg"],
   },
 };
 
 export default function ModelPage() {
   const gradient = gradients[model.username.charAt(0).toLowerCase()] ?? gradients["a"];
-  const photos = getModelPhotos();
 
   return (
     <main
-      className={`flex flex-col items-center justify-center px-6 py-12 bg-gradient-to-br ${gradient} text-white min-h-screen`}
+      className={`flex flex-col items-center justify-center px-6 py-16 bg-gradient-to-br ${gradient} text-white min-h-screen`}
     >
-      <h1 className="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-center mb-2">
+      <h1 className="font-heading text-5xl sm:text-6xl font-bold tracking-tight text-center mb-3">
         {model.name}
       </h1>
-      <p className="text-white/50 text-sm sm:text-base text-center mb-10 max-w-xs">
+      <p className="text-white/50 text-sm sm:text-base text-center mb-16 max-w-xs">
         {model.tagline}
       </p>
 
-      <HeroCarousel photos={photos} name={model.name} />
-
-      <h2 className="font-heading text-xl sm:text-2xl font-semibold text-center mt-10 mb-2">
-        {model.heading}
-      </h2>
-      <p className="text-white/60 text-sm sm:text-base text-center max-w-sm leading-relaxed">
+      <p className="font-heading text-4xl sm:text-5xl font-bold text-center max-w-xs leading-tight">
         {model.description}
       </p>
 
       <ButterflyGame />
 
-      <div className="mt-8">
+      <div className="mt-10">
         <SocialLinks socials={model.socials as Record<string, string>} />
       </div>
     </main>
